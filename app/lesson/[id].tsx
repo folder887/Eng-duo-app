@@ -13,6 +13,9 @@ import { Typography } from '../../src/constants/typography';
 import { ProgressBar } from '../../src/components/ProgressBar';
 import { units, Question, Lesson } from '../../src/data/lessons';
 import { completeLesson, getUserProgress } from '../../src/utils/storage';
+import { addMistake } from '../../src/utils/spaced-repetition';
+import { checkAchievements } from '../../src/utils/achievements';
+import { checkSubscription } from '../../src/utils/subscription';
 
 export default function LessonScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -65,6 +68,14 @@ export default function LessonScreen() {
       setCorrectCount((prev) => prev + 1);
     } else {
       setHearts((prev) => prev - 1);
+      // Track mistake for spaced repetition
+      const word = lesson.words.find(w =>
+        w.original.toLowerCase() === question.correctAnswer.toLowerCase() ||
+        w.translation.toLowerCase() === question.correctAnswer.toLowerCase()
+      );
+      if (word) {
+        addMistake(word.id, word.original, word.translation);
+      }
       // Shake animation on wrong answer
       Animated.sequence([
         Animated.timing(shakeAnim, { toValue: 10, duration: 50, useNativeDriver: true }),

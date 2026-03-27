@@ -7,7 +7,7 @@ export interface Word {
 
 export interface Question {
   id: string;
-  type: 'multiple_choice' | 'translate' | 'match' | 'fill_blank';
+  type: 'multiple_choice' | 'translate' | 'match' | 'fill_blank' | 'listening' | 'match_pairs';
   prompt: string;
   correctAnswer: string;
   options?: string[];
@@ -32,6 +32,8 @@ export interface Unit {
   title: string;
   titleRu: string;
   description: string;
+  color: string;
+  icon: string;
   lessons: Lesson[];
 }
 
@@ -41,6 +43,8 @@ export const units: Unit[] = [
     title: 'Basics',
     titleRu: 'Основы',
     description: 'Greetings and simple phrases',
+    color: '#58CC02',
+    icon: '🌟',
     lessons: [
       {
         id: 'lesson_1_1',
@@ -218,6 +222,8 @@ export const units: Unit[] = [
     title: 'Family',
     titleRu: 'Семья',
     description: 'Family members and relationships',
+    color: '#CE82FF',
+    icon: '👨‍👩‍👧‍👦',
     lessons: [
       {
         id: 'lesson_2_1',
@@ -281,6 +287,8 @@ export const units: Unit[] = [
     title: 'Food & Drinks',
     titleRu: 'Еда и напитки',
     description: 'Food, drinks, and ordering',
+    color: '#FF9600',
+    icon: '🍕',
     lessons: [
       {
         id: 'lesson_3_1',

@@ -14,18 +14,29 @@ export default function RootLayout() {
         tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: Colors.textLight,
         tabBarStyle: {
-          backgroundColor: Colors.surface,
-          borderTopColor: Colors.border,
-          height: 60,
-          paddingBottom: 8,
+          backgroundColor: 'rgba(255, 255, 255, 0.85)',
+          borderTopColor: Colors.glassBorder,
+          borderTopWidth: 1,
+          height: 65,
+          paddingBottom: 10,
           paddingTop: 8,
+          shadowColor: Colors.glassShadow,
+          shadowOffset: { width: 0, height: -4 },
+          shadowOpacity: 1,
+          shadowRadius: 16,
+          elevation: 8,
         },
         tabBarLabelStyle: {
           fontSize: 11,
           fontWeight: '600',
         },
         headerStyle: {
-          backgroundColor: Colors.surface,
+          backgroundColor: 'rgba(255, 255, 255, 0.85)',
+          shadowColor: Colors.glassShadow,
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 1,
+          shadowRadius: 8,
+          elevation: 3,
         },
         headerTitleStyle: {
           color: Colors.text,
@@ -44,10 +55,27 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
+        name="daily"
+        options={{
+          title: 'Задание',
+          tabBarIcon: () => <TabIcon emoji="🎯" />,
+          headerTitle: 'Задание дня',
+        }}
+      />
+      <Tabs.Screen
         name="practice"
         options={{
           title: 'Практика',
-          tabBarIcon: () => <TabIcon emoji="🎯" />,
+          tabBarIcon: () => <TabIcon emoji="🔄" />,
+          headerTitle: 'Практика',
+        }}
+      />
+      <Tabs.Screen
+        name="mistakes"
+        options={{
+          title: 'Ошибки',
+          tabBarIcon: () => <TabIcon emoji="📝" />,
+          headerTitle: 'Работа над ошибками',
         }}
       />
       <Tabs.Screen
@@ -55,14 +83,25 @@ export default function RootLayout() {
         options={{
           title: 'Профиль',
           tabBarIcon: () => <TabIcon emoji="👤" />,
+          headerTitle: 'Профиль',
         }}
       />
+      {/* Hidden screens */}
       <Tabs.Screen
         name="lesson/[id]"
-        options={{
-          href: null,
-          headerShown: false,
-        }}
+        options={{ href: null, headerShown: false }}
+      />
+      <Tabs.Screen
+        name="auth"
+        options={{ href: null, headerShown: false }}
+      />
+      <Tabs.Screen
+        name="subscription"
+        options={{ href: null, headerShown: false }}
+      />
+      <Tabs.Screen
+        name="achievements"
+        options={{ href: null, headerShown: false }}
       />
     </Tabs>
   );

@@ -27,4 +27,15 @@ export const Colors = {
 
   progressBg: '#E8E8F0',
   progressFill: '#58CC02',
+
+  // Liquid Glass
+  glass: 'rgba(255, 255, 255, 0.72)',
+  glassBorder: 'rgba(255, 255, 255, 0.35)',
+  glassShadow: 'rgba(100, 100, 200, 0.12)',
+  glassOverlay: 'rgba(255, 255, 255, 0.15)',
+  gradientStart: '#6C63FF',
+  gradientEnd: '#A78BFA',
+  gradientAccent: '#4ECDC4',
+  backgroundGradientStart: '#EEF0FF',
+  backgroundGradientEnd: '#F8F0FF',
 };
